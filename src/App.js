@@ -8,13 +8,15 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import ValidacoesCadastro from './contexts/validacoesCadastro';
 
 function App() {
   return (
     <Container component="article" maxWidth="sm">
       <Typography variant='h3' component='h1' align='center'>Formulário de cadastro</Typography>
-
-      <FormularioCadastro aoEnviar={aoEnviarForm} validacoes={{cpf: validarCPF, senha: validarSenha, nome: validarSenha}} />
+      <ValidacoesCadastro.Provider value={{cpf: validarCPF, senha: validarSenha, nome: validarSenha}}>
+        <FormularioCadastro aoEnviar={aoEnviarForm} />
+      </ValidacoesCadastro.Provider>
     </Container>
   );
 }
